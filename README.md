@@ -12,3 +12,4 @@ Go-Kubernetes a Movie App is a simple API application written in Go. It provides
 - Go to write the API for CRUD operations
 - Docker to create a docker image for Kubernetes deployment
 - Kubernetes for deployment and to showcase basic understanding on Kubernetes
+- Tried implementing Kubernetes cluster I have been trying to figure out things so i got few files        completely commented.
