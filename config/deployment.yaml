@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: movie-app
+  template:
+    metadata:
+      labels:
+        app: movie-app
+    spec:
+      containers:
+      - name: movie-app
+        image: parthlukhi/gokube-controller:v1.0 
+        ports:
+        - containerPort: 8000

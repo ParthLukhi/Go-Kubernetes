@@ -1,29 +1,21 @@
 package main
 
 import (
+	"fmt"
+	"log"
 	"net/http"
 
-	"github.com/julienschmidt/httprouter"
-	"gopkg.in/mgo.v2"
+	"github.com/gorilla/mux"
 
 	"github.com/ParthLukhi/Go-Kubernetes/controllers"
 )
 
 func main() {
 
-	r := httprouter.New()
-	uc := controllers.NewUserController(getSession())
-	r.GET("/user/:id", uc.GetUser)
-	r.POST(" /user", uc.CreateUser)
-	r.DELETE("/user/:id", uc.RemoveUser)
-	http.ListenAndServe("localhost:8080", r)
-}
+	r := mux.NewRouter()
 
-func getSession() *mgo.Session {
+	controllers.RegisterMovieRoutes(r)
 
-	s, err := mgo.Dial("mongodb://localhost:27017")
-	if err != nil {
-		panic(err)
-	}
-	return s
+	fmt.Printf("Starting server at port 8000\n")
+	log.Fatal(http.ListenAndServe(":8000", r))
 }
