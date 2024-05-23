@@ -1,6 +1,9 @@
 # Use the official Golang image as the base image
 FROM golang:1.22.3-alpine
 
+# Set up dependencies
+RUN apk add --no-cache git
+
 # Set the Current Working Directory inside the container
 WORKDIR /app
 

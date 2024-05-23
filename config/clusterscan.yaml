@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: ClusterScan
+metadata:
+  name: movie-app-clusterscan
+spec:
+  oneOff: true

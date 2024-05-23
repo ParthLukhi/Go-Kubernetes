@@ -14,6 +14,17 @@ spec:
     spec:
       containers:
       - name: movie-app
-        image: parthlukhi/gokube-controller:v1.0 
+        image: parthlukhi/movie-app:v1.0
         ports:
         - containerPort: 8000
+        env:
+        - name: KUBECONFIG
+          value: /Users/parthlukhi/Downloads/Go-Kubernetes/config/kubeconfig
+        volumeMounts:
+        - name: kubeconfig-volume
+          mountPath: /Users/parthlukhi/Downloads/Go-Kubernetes/config/kubeconfig
+          subPath: kubeconfig
+      volumes:
+      - name: kubeconfig-volume
+        configMap:
+          name: kubeconfig
